@@ -33,7 +33,7 @@ def __download__(url, path):
     print("move done")
 
 
-url = "https://lelscan-vf.co/uploads/manga/one-piece/chapters/1028/01.jpg"
+tek = "https://lelscan-vf.co/uploads/manga/one-piece/chapters/1028/01.jpg"
 path =  "/home/abdelhakim/Bureau/One-Piece/test"
 #__download__(url,path)
 
@@ -46,28 +46,61 @@ base = "https://lelscans.net/scan-one-piece/"
 chapitre = input("Quel chapitre ? \n")
 pages = input("Nombre de page ?\n")
 
-"""
+
 url= base + chapitre + "/" + pages
 #print (url)
 
-
+"""
 #scrapper image
 requete = requests.get(url)
 soup = BeautifulSoup(requete.text,"html.parser")
 #print(soup)
 images = soup.findAll('img')
 image = images[0]
-print (image['src'])
+#print (image['src'])
+src = image['src']
+img_rl = "https://lelscans.net" + src
+print (img_rl)
+__download__(img_rl,path)
 
 #https://lelscans.net/mangas/one-piece/1007/01.jpg?v=fr1615535358
 
 #Download l'image
 """
+"""
+requete = requests.get(url)
+    soup = BeautifulSoup(requete.text,"html.parser")
+    #print(soup)
+    images = soup.findAll('img')
+    image = images[0]
+    src= (image['src'])
+    print(src)
 
-path= "home/abdelhakim/Bureau/One-Piece/" + chapitre 
+
+base = "https://lelscan-vf.co/uploads/manga/one-piece/chapters"
 
 #iterer nombre de page
 for i in range (1,int(pages)+1):
+    for j in range (1,11):
+        url= base + chapitre + "/" + "0" + str(i) + ".jpg"
+        print(url)
+        #__download__(url,path)
+    url= base + chapitre + "/" + str(i) + ".jpg"
+    print(url)
+    #__download__(url,path)
+"""
+
+
+
+for i in range (1,int(pages)+1):
     url= base + chapitre + "/" + str(i)
-    #print(url)
-    __download__(url,path)
+    requete = requests.get(url)
+    soup = BeautifulSoup(requete.text,"html.parser")
+    #print(soup)
+    images = soup.findAll('img')
+    image = images[0]
+    #print (image['src'])
+    src = image['src']
+    img_rl = "https://lelscans.net" + src
+    print (img_rl)
+    __download__(img_rl,path)
