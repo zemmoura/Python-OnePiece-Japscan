@@ -1,2 +1,2 @@
-# Python-OnePiece-Japscan
-Download One piece's chapters as pdf from japscan.com website
+# Python-OnePiece-lelscan
+Download One piece's chapters as pdf from lelscan.com website
