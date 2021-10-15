@@ -40,8 +40,11 @@ chapitre = sys.argv[1]
 dir="/home/abdelhakim/Bureau/One-Piece/chapitre/" + chapitre
 subprocess.call(["mkdir", dir])
 
+"""
 print("Combien de page ?")
 nbr = input()
+"""
+nbr = "17"
 
 #Recuperer l'url de la page 1 du chapitre
 url = "https://lelscan.net/scan-one-piece/" + chapitre

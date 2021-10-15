@@ -10,15 +10,16 @@ dir="/home/abdelhakim/Bureau/One-Piece/chapitre"
 
 pdf=".pdf"
 cd "${dir}/${numero}"
-nom_pdf = "$numero$pdf"
+nom_pdf="$numero$pdf"
 
 img2pdf *.jpg -o $nom_pdf
 rm *.jpg
 
 echo Done
 
+ls -l
 git pull One-PieceGithub
-git add $numero
+git add *
 git commit -m "new chapter ${numero}"
 git push --set-upstream One-PieceGithub
 
