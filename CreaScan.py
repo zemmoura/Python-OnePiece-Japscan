@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import urllib.request
 import shutil
 import subprocess
+import os
+import sys
 
 
 def img_dl(path):
@@ -33,10 +35,9 @@ def img_dl(path):
 
 
 #Recuperer le numero de chapitre a telecharger
-print("Quel chapitre telecharger ?")
-chapitre = input()
+chapitre = sys.argv[1]
 
-dir="/home/kali/Documents/ScanOnepiece/image/" + chapitre
+dir="/home/abdelhakim/Bureau/One-Piece/chapitre/" + chapitre
 subprocess.call(["mkdir", dir])
 
 print("Combien de page ?")
@@ -64,8 +65,14 @@ for i in range (0,int(nbr)):
 	page = requests.get(urlnouveau)
 	status = page.status_code
 	print(status)
-
+"""
 image=dir+"/*.jpg"
+nom_fichier = '*.jpg'
 pdf= chapitre+".pdf"
-subprocess.call(["cd",dir])
-subprocess.call(["img2pdf","*.jpg","-o",pdf])
+os.chdir(dir)
+subprocess.call(["ls", "-l"])
+#subprocess.call(["img2pdf", "*" , "-o", pdf])
+
+#subprocess.call(["cd","image/"])
+#subprocess.Popen(["img2pdf","*.jpg","-o",pdf],cwd = dir)
+"""

@@ -2,7 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 import shutil # to save it locally
-
+import subprocess
 
 
 def __download__(url, path):
@@ -32,12 +32,16 @@ def __download__(url, path):
     shutil.move(filename, fichier)
     print("move done")
 
+    new_name = str(i) + ".jpg"
+
+    subprocess.call(["cp",filename, new_name])
+
 #construire l'url
 base = "https://lelscans.net/scan-one-piece/"
 chapitre = input("Quel chapitre ? \n")
 pages = input("Nombre de page ?\n")
 url= base + chapitre + "/" + pages
-path =  "/home/abdelhakim/Bureau/One-Piece/test"
+path =  "/home/abdelhakim/Bureau/One-Piece/test/"
 
 for i in range (1,int(pages)+1):
     url= base + chapitre + "/" + str(i)
@@ -51,3 +55,9 @@ for i in range (1,int(pages)+1):
     img_rl = "https://lelscans.net" + src
     print (img_rl)
     __download__(img_rl,path)
+
+
+
+nom_pdf = "One-Piece-" + chapitre + '.pdf'
+*
+subprocess.call(["img2pdf", "test/*.jpg", "-o", nom_pdf])
